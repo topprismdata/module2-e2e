@@ -3,8 +3,8 @@
 模块② 片区规划集成 E2E（WP17）：六仓 tag 锁定依赖图上的**门禁不变量**测试。
 
 ```
-plan-release v0.1.0 × assignment-service v0.2.0 × service-rules v0.2.0
-× dq-workbench v0.1.1 × sraf v0.1.3 × territory-ir v0.3.2
+plan-release v0.2.0 × assignment-service v0.2.0 × service-rules v0.2.0
+× dq-workbench v0.1.1 × sraf v0.2.0 × territory-ir v0.3.2
 （传递：coords-core v0.1.0 · market-partition v0.1.1）
 ```
 
@@ -19,13 +19,14 @@ plan-release v0.1.0 × assignment-service v0.2.0 × service-rules v0.2.0
 | G5 | 无主门店 fail-closed | REVIEW+REPAIR_REQUIRED → 先 ingest Finding 再开工作台工单 |
 | G6 | 兼跑需批准链 | 无批准拒 → dq-workbench HITL 双 SUPPORT 仲裁 → 批准落分配；主访独家不回归 |
 | G7 | 词表单源跨链一致 | sraf 与 territory-ir 的 RING_WORDS 是同一对象（WP11 门禁） |
+| G9 | 载荷契约链上 fail-fast | 缺 load_vector 的 DRAFT 即拒；合法载荷全生命周期照常 |
 | G8 | 缺口路由 | 诊断→DP01/DP03 映射；未知诊断不臆测路由（primary=None+更多证据） |
 
 ## 运行
 
 ```bash
 uv pip install "module2-e2e[dev] @ git+https://github.com/topprismdata/module2-e2e.git@v0.1.0"
-python -m pytest tests -q   # 8 passed，秒级，全 hermetic
+python -m pytest tests -q   # 9 passed，秒级，全 hermetic
 ```
 
 依赖升级纪律：任何上游仓 bump 需同步本仓 pin 并全绿后才打新 tag（六仓矩阵一致性）。

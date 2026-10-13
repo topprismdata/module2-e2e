@@ -144,3 +144,11 @@ def test_g8_缺口路由到片区DP(env):
     assert router.route("CapacityShortage").primary_route.startswith("DP01")
     unk = router.route("不存在的诊断")
     assert unk.primary_route is None and "更多证据" in unk.reason  # 不臆测路由
+
+
+def test_g9_载荷契约在链上fail_fast(env):
+    """WP16：非法方案（缺负载向量）在 DRAFT 入口即拒——治理只作用于合法文档。"""
+    with pytest.raises(IllegalTransition, match="load_vector"):
+        env["plans"].new_iteration("BAD", {"ir": {"clauses": ["街道A"]}}, actor="planner")
+    pv = _activate_plan(env)  # 合法载荷全生命周期照常
+    assert env["plans"].active(pv.batch_id).ref == pv.ref

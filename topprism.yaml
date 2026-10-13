@@ -8,7 +8,7 @@ topprism:
   evidence:
     type: automated-test-suite
     scope: >
-      CI 3.11+3.12; 8 门禁全绿（六仓 tag 矩阵：plan-release/assignment-service/
+      CI 3.11+3.12; 9 门禁全绿（六仓 tag 矩阵：plan-release/assignment-service/
       service-rules/dq-workbench/sraf/territory-ir）——未审批不可发布/四眼/
-      发布不可变/追溯 fail-closed/无主进工作台/兼跑批准链/词表对象同一/路由不臆测。
+      发布不可变/追溯 fail-closed/无主进工作台/兼跑批准链/词表对象同一/路由不臆测/载荷契约 fail-fast。
   customer_data_in_repo: false
