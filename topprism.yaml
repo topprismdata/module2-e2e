@@ -1,0 +1,14 @@
+topprism:
+  purpose:
+    - territory-planning
+  capability: module2-integration-e2e
+  platform_layer: governance
+  # maturity 枚举(组织级四档): specification-frozen | experiment-validated | applied-component | certified-component
+  maturity: experiment-validated
+  evidence:
+    type: automated-test-suite
+    scope: >
+      CI 3.11+3.12; 8 门禁全绿（六仓 tag 矩阵：plan-release/assignment-service/
+      service-rules/dq-workbench/sraf/territory-ir）——未审批不可发布/四眼/
+      发布不可变/追溯 fail-closed/无主进工作台/兼跑批准链/词表对象同一/路由不臆测。
+  customer_data_in_repo: false
